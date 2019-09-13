@@ -3,26 +3,27 @@ package androidapps.linuxtutorialapp;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 // a class for emulating the terminal
 public class Terminal {
 
     private String content;
-    private String username;
+    private String directory;
 
     private EditText input;
 
     private TextView display;
 
-    public Terminal(String username, TextView display, EditText input) {
+    public Terminal(String directory, TextView display, EditText input) {
         content = "";
-        this.username = username;
+        this.directory = directory;
         this.display = display;
         this.input = input;
     }
 
     // call this method upon pressing enter/submit
-    /* Note to Ace: used a parameter for the String rather than an instance variable so I could
-    prevent bugs/errors from editing the String and updating the terminal when it's not necessary */
     public void submit() {
         String text = input.getText().toString();
         updateTerminal(text);
@@ -37,12 +38,12 @@ public class Terminal {
     }
 
     private void addUserResponse(String text) {
-        // change header as necessary
-        String header = username + "$ ";
+        String header = "root:" + directory + "$ ";
         content += header + text;
     }
 
     private void addTerminalResponse(String text) {
         // might require another class?
+        HashMap<String, ArrayList<String>> dictionary = new HashMap<>();
     }
 }
