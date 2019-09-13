@@ -13,6 +13,11 @@ public class FolderTree {
     private Node<String> root;
     private Node<String> currentNode;
 
+    public FolderTree(Node<String> root) {
+        this.root = root;
+        currentNode = this.root;
+    }
+
     public boolean add(Node<String> parent, Node<String> child) {
         if (parent != null) {
             parent.addChild(child);
@@ -29,8 +34,12 @@ public class FolderTree {
         return false;
     }
 
-    /// TODO
+    public void setCurrentNode(Node<String> current) {
+        currentNode = current;
+    }
+
     public void printTree() {
+
     }
 
     // class that implements the nodes for the tree
