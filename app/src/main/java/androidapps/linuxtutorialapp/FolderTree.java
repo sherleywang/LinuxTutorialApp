@@ -5,11 +5,32 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class FolderTree {
 
+    /*
+     * Print method to print entire tree
+     * Print method to print specific part (ls command)
+     *
+     */
     private Node<String> root;
+    private Node<String> currentNode;
 
-    public boolean add(Node<String> value) {
-
+    public boolean add(Node<String> parent, Node<String> child) {
+        if (parent != null) {
+            parent.addChild(child);
+            return true;
+        }
         return false;
+    }
+
+    public boolean remove(Node<String> parent, int child) {
+        if (parent != null) {
+            parent.deleteChild(child);
+            return true;
+        }
+        return false;
+    }
+
+    /// TODO
+    public void printTree() {
     }
 
     // class that implements the nodes for the tree
@@ -48,6 +69,9 @@ public class FolderTree {
         }
 
         public void deleteChild(int child) {
+            if (child >= children.size() || child < 0) {
+                throw new IllegalArgumentException("Index is out of bounds.");
+            }
             children.remove(child);
         }
     }
