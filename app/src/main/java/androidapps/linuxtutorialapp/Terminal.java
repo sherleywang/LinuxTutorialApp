@@ -3,47 +3,49 @@ package androidapps.linuxtutorialapp;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-
 // a class for emulating the terminal
 public class Terminal {
 
     private String content;
     private String directory;
-
     private EditText input;
-
     private TextView display;
+    private Commands command;
 
     public Terminal(String directory, TextView display, EditText input) {
         content = "";
         this.directory = directory;
         this.display = display;
         this.input = input;
+        command = new Commands();
     }
 
     // call this method upon pressing enter/submit
     public void submit() {
-        String text = input.getText().toString();
-        updateTerminal(text);
+        String userInput = input.getText().toString();
+        updateTerminal(userInput);
     }
 
     // update the display of the terminal
-    private void updateTerminal(String text) {
+    private void updateTerminal(String userInput) {
         content += "\n";
-        addUserResponse(text);
+        addUserResponse(userInput);
         content += "\n";
-        addTerminalResponse(text);
+        addTerminalResponse(userInput);
     }
 
-    private void addUserResponse(String text) {
+    private void addUserResponse(String userInput) {
         String header = "root:" + directory + "$ ";
-        content += header + text;
+        content += header + userInput;
     }
 
-    private void addTerminalResponse(String text) {
-        // might require another class?
-        HashMap<String, ArrayList<String>> dictionary = new HashMap<>();
+    private void addTerminalResponse(String userInput) {
+        if (userInput.length() != 0) {
+            boolean dirCommand = command.getType(userInput);
+            if (dirCommand)
+                return;
+            else
+                return;
+        }
     }
 }

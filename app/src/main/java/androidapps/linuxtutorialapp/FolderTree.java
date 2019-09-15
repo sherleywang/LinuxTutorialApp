@@ -1,21 +1,18 @@
 package androidapps.linuxtutorialapp;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
-@SuppressWarnings("all")
+// folder directory class
 public class FolderTree {
 
-    /*
-     * Print method to print entire tree
-     * Print method to print specific part (ls command)
-     *
-     */
     private Node<String> root;
-    private Node<String> currentNode;
+    private Node<String> flag;
+    private String response;
 
     public FolderTree(Node<String> root) {
         this.root = root;
-        currentNode = this.root;
+        flag = this.root;
+        response = "";
     }
 
     public boolean add(Node<String> parent, Node<String> child) {
@@ -34,54 +31,40 @@ public class FolderTree {
         return false;
     }
 
-    public void setCurrentNode(Node<String> current) {
-        currentNode = current;
+    public String getResponse() {
+        return response;
+    }
+
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public void setFlag(Node<String> current) {
+        flag = current;
+    }
+
+    public Node<String> getFlag() {
+        return flag;
     }
 
     public void printTree() {
-
+        printTreeHelper(root, 0);
     }
 
-    // class that implements the nodes for the tree
-    private static class Node<E> {
-
-        private E info;
-        private Node<E> parent;
-        private ArrayList<Node<E>> children;
-
-        public Node(E value) {
-            info = value;
-        }
-
-        public E getInfo() {
-            return info;
-        }
-
-        public void setInfo(E value) {
-            info = value;
-        }
-
-        public Node<E> getParent() {
-            return parent;
-        }
-
-        public void setParent(Node<E> parent) {
-            this.parent = parent;
-        }
-
-        public ArrayList<Node<E>> getChildren() {
-            return children;
-        }
-
-        public void addChild(Node<E> child) {
-            children.add(child);
-        }
-
-        public void deleteChild(int child) {
-            if (child >= children.size() || child < 0) {
-                throw new IllegalArgumentException("Index is out of bounds.");
+    private void printTreeHelper(Node<String> current, int tabs) {
+        if (current != null) {
+            StringBuilder structure = new StringBuilder();
+            for (int tab = 0; tab < tabs; tab++)
+                structure.append("\t");
+            structure.append(current.getInfo());
+            structure.append("\n");
+            System.out.println(structure.toString());
+            HashMap<String, Node<String>> children = current.getChildren();
+            for (String child : children.keySet()) {
+                Node<String> kid = children.get(child);
+                printTreeHelper(kid, tabs + 1);
             }
-            children.remove(child);
         }
     }
+
 }
