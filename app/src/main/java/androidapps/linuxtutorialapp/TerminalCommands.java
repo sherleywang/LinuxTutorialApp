@@ -13,7 +13,4 @@ public class TerminalCommands extends Commands {
         input = in;
         display = dis;
     }
-
-
-
 }

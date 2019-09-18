@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".welcome_screen">
+    tools:context=".activities.welcome_screen">
 
     <!--<include layout="@layout/content_welcome_screen" />-->
 
@@ -17,6 +17,7 @@
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">

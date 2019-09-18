@@ -1,4 +1,4 @@
-package androidapps.linuxtutorialapp;
+package androidapps.linuxtutorialapp.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,19 +15,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import androidapps.linuxtutorialapp.R;
+
 public class ScrollingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /* TODO set up config file
-         * Sets the initial activity to section if config claims welcome screen was already read. */
-        boolean seenWelcomeScreen = false ? true : false;
-        setContentView(seenWelcomeScreen ? R.layout.activity_scrolling : R.layout.welcome_screen);
+
 
         Log.d("T1", "InsideEEEEEEEEEEEEEEEEEEEE.");
-        if (!seenWelcomeScreen) {
+        /*if (!seenWelcomeScreen) {
             Intent myIntent = new Intent(ScrollingActivity.this, welcome_screen.class);
             ScrollingActivity.this.startActivity(myIntent);
         } else {
@@ -42,7 +41,7 @@ public class ScrollingActivity extends AppCompatActivity {
                             .setAction("Action", null).show();
                 }
             });
-        }
+        }*/
 
     }
 
