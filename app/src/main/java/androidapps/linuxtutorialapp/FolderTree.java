@@ -1,6 +1,8 @@
 package androidapps.linuxtutorialapp;
 
-import java.util.HashMap;
+import android.util.Log;
+
+import java.util.TreeMap;
 
 // folder directory class
 public class FolderTree {
@@ -10,6 +12,8 @@ public class FolderTree {
     private String response;
 
     public FolderTree(Node<String> root) {
+        if (root == null)
+            throw new IllegalArgumentException("Root can't be null");
         this.root = root;
         flag = this.root;
         response = "";
@@ -23,7 +27,7 @@ public class FolderTree {
         return false;
     }
 
-    public boolean remove(Node<String> parent, int child) {
+    public boolean remove(Node<String> parent, Node<String> child) {
         if (parent != null) {
             parent.deleteChild(child);
             return true;
@@ -58,8 +62,8 @@ public class FolderTree {
                 structure.append("\t");
             structure.append(current.getInfo());
             structure.append("\n");
-            System.out.println(structure.toString());
-            HashMap<String, Node<String>> children = current.getChildren();
+            Log.d("in tree", structure.toString());
+            TreeMap<String, Node<String>> children = current.getChildren();
             for (String child : children.keySet()) {
                 Node<String> kid = children.get(child);
                 printTreeHelper(kid, tabs + 1);
@@ -67,46 +71,4 @@ public class FolderTree {
         }
     }
 
-    // tree node class to support the folder directory implementation
-    private static class Node<E> {
-
-        private E info;
-        private Node<E> parent;
-        private HashMap<E, Node<E>> children;
-
-        public Node(E value) {
-            info = value;
-            children = new HashMap<>();
-        }
-
-        public E getInfo() {
-            return info;
-        }
-
-        public void setInfo(E value) {
-            info = value;
-        }
-
-        public Node<E> getParent() {
-            return parent;
-        }
-
-        public void setParent(Node<E> parent) {
-            this.parent = parent;
-        }
-
-        public HashMap<E, Node<E>> getChildren() {
-            return children;
-        }
-
-        public void addChild(Node<E> child) {
-            children.put(child.info, child);
-        }
-
-        public void deleteChild(int child) {
-            if (child >= children.size() || child < 0)
-                throw new IllegalArgumentException("Index is out of bounds.");
-            children.remove(child);
-        }
-    }
 }
