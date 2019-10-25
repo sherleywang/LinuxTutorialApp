@@ -1,14 +1,13 @@
 package androidapps.linuxtutorialapp.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
-import androidapps.linuxtutorialapp.FolderTreeTests;
+import androidx.appcompat.app.AppCompatActivity;
+
 import androidapps.linuxtutorialapp.R;
 
 public class InitialActivity extends AppCompatActivity {
@@ -38,7 +37,7 @@ public class InitialActivity extends AppCompatActivity {
         // FolderTreeTests ftt = new FolderTreeTests();
         // ftt.testOne();
 
-        if (!seenWelcomeScreen) {
+        if (seenWelcomeScreen) {
             Intent myIntent = new Intent(InitialActivity.this, welcome_screen.class);
             myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(myIntent);

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bgColor"
     tools:context=".activities.welcome_screen">
 
     <!--<include layout="@layout/content_welcome_screen" />-->
@@ -18,7 +19,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="5"
+            android:layout_weight="200"
             android:contentDescription="@string/tux_desc"
             app:srcCompat="@drawable/tux" />
 
@@ -28,7 +29,8 @@
             android:layout_height="match_parent"
             android:layout_weight="95"
             android:text="@string/welcome_message"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="@color/darkOrange" />
 
         <Button
             android:id="@+id/enter_button"

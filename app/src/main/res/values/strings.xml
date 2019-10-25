@@ -6,24 +6,6 @@
     <string name="title_activity_welcome_screen">welcome_screen</string>
     <string name="tux_desc">A picture of free-use Tux.</string>
     <string name="enter_button">"Let's go!"</string>
-    <string name="welcome_message">.This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
-    This is a welcome message.\n
+    <string name="welcome_message">This is a welcome message.
     </string>
 </resources>
