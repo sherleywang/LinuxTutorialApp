@@ -8,7 +8,7 @@ import java.util.TreeMap;
 public class FolderTree {
 
     private Node<String> root;
-    private Node<String> flag;
+    private Node<String> flag; // Current directory
     private String response;
 
     public FolderTree(Node<String> root) {

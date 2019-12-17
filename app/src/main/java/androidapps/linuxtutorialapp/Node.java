@@ -3,16 +3,21 @@ package androidapps.linuxtutorialapp;
 import java.util.TreeMap;
 
 // tree node class to support the folder directory implementation
-public class Node<String> {
+public class Node<String>  {
 
     private String name;
     private Node<String> parent;
     private TreeMap<String, Node<String>> children;
 
+    // Node attributes
+    private boolean directory = false;
+    private String userOwner = "";
+    private int lastModified;
+
     public Node(String name, Node<String> parent) {
         this.name = name;
         this.parent = parent;
-        children = new TreeMap<>();
+        this.children = new TreeMap<>();
     }
 
     public String getName() {
@@ -46,5 +51,13 @@ public class Node<String> {
             return true;
         }
         return false;
+    }
+
+    public boolean getDirectory() {
+        return this.directory;
+    }
+
+    public void setDirectory(boolean bool) {
+        this.directory = bool;
     }
 }
