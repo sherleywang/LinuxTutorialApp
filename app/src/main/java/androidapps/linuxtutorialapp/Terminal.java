@@ -3,17 +3,23 @@ package androidapps.linuxtutorialapp;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 // a class for emulating the terminal
 public class Terminal {
 
     private String content;
+    private Commands commands;
+    private FolderTree directory;
     private EditText input;
     private TextView display;
 
-    public Terminal(TextView display, EditText input) {
+    public Terminal(FolderTree directory, TextView display, EditText input, ArrayList<String> commands) {
         content = "";
+        this.directory = directory;
         this.display = display;
         this.input = input;
+        this.commands = new Commands(commands);
     }
 
     public String getContent() {
@@ -40,10 +46,11 @@ public class Terminal {
     }
 
     private String getDirectory() {
-        return "";
+        return directory.getDirectory();
     }
 
     private void addTerminalResponse(String userInput) {
-
+        String result = commands.parseCommands(directory, userInput);
+        content += result;
     }
 }

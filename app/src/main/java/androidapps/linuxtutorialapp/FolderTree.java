@@ -71,4 +71,8 @@ public class FolderTree {
         }
     }
 
+    public String getDirectory() {
+        return "";
+    }
+
 }

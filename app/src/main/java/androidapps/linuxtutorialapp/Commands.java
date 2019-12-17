@@ -1,44 +1,17 @@
 package androidapps.linuxtutorialapp;
 
-import java.util.TreeMap;
+import java.util.ArrayList;
 
 public class Commands {
 
-    private TreeMap<String, Boolean> typeDict;
+    private ArrayList<String> validCommands;
 
-    public Commands() {
-        typeDict = createDict();
+    public Commands(ArrayList<String> validCommands) {
+        this.validCommands = validCommands;
     }
 
-    public TreeMap<String, Boolean> createDict() {
-        TreeMap<String, Boolean> result = new TreeMap<>();
-        String[] commandArray = new String[] {"ls", "cd", "mkdir"};
-        boolean[] type = new boolean[] {true, true, true};
-        int index = 0;
-        for (String s : commandArray) {
-            result.put(s, type[index]);
-            index++;
-        }
-        return result;
-    }
-
-    public boolean getType(String userInput) {
-        int index = 0;
-        char current;
-        String userCommand = "";
-        while (index < userInput.length()) {
-            current = userInput.charAt(index);
-            if (current == ' ')
-                break;
-            else
-                userCommand += current;
-        }
-        if (typeDict.containsKey(userCommand)) {
-            return typeDict.get(userCommand);
-        } else {
-            // error handling, if user types in an invalid command
-            return false;
-        }
+    public String parseCommands(FolderTree directory, String input) {
+        return "";
     }
 
 }
