@@ -10,8 +10,8 @@ public class Node<String>  {
     private TreeMap<String, Node<String>> children;
 
     // Node attributes
-    private boolean directory = false;
-    private String userOwner = "";
+    private boolean isDirectory;
+    private String userOwner;
     private int lastModified;
 
     public Node(String name, Node<String> parent) {
@@ -30,6 +30,22 @@ public class Node<String>  {
 
     public Node<String> getParent() {
         return parent;
+    }
+
+    public boolean isDirectory() {
+        return isDirectory;
+    }
+
+    public void makeDirectory() {
+        isDirectory = true;
+    }
+
+    public String getOwner() {
+        return userOwner;
+    }
+
+    public void setOwner(String owner) {
+        userOwner = owner;
     }
 
     public TreeMap<String, Node<String>> getChildren() {
@@ -51,13 +67,5 @@ public class Node<String>  {
             return true;
         }
         return false;
-    }
-
-    public boolean getDirectory() {
-        return this.directory;
-    }
-
-    public void setDirectory(boolean bool) {
-        this.directory = bool;
     }
 }
