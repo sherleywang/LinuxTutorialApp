@@ -9,8 +9,9 @@ public class Node<String> {
     private Node<String> parent;
     private TreeMap<String, Node<String>> children;
 
-    public Node(String name) {
+    public Node(String name, Node<String> parent) {
         this.name = name;
+        this.parent = parent;
         children = new TreeMap<>();
     }
 
@@ -26,17 +27,13 @@ public class Node<String> {
         return parent;
     }
 
-    public void setParent(Node<String> parent) {
-        this.parent = parent;
-    }
-
     public TreeMap<String, Node<String>> getChildren() {
         return children;
     }
 
-    public boolean addChild(String name) {
+    public boolean addChild(String name, Node<String> parent) {
         if (!children.containsKey(name)) {
-            Node<String> child = new Node<>(name);
+            Node<String> child = new Node<>(name, parent);
             children.put(name, child);
             return true;
         }

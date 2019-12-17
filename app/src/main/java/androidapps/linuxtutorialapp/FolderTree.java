@@ -21,7 +21,7 @@ public class FolderTree {
 
     public boolean add(Node<String> parent, String child) {
         if (parent != null) {
-            parent.addChild(child);
+            parent.addChild(child, parent);
             return true;
         }
         return false;
