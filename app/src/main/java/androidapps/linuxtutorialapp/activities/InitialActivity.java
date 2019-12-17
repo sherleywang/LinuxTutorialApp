@@ -34,9 +34,6 @@ public class InitialActivity extends AppCompatActivity {
                     .apply();
         }
 
-        // FolderTreeTests ftt = new FolderTreeTests();
-        // ftt.testOne();
-
         if (seenWelcomeScreen) {
             Intent myIntent = new Intent(InitialActivity.this, welcome_screen.class);
             myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
