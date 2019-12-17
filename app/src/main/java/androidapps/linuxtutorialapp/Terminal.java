@@ -22,8 +22,8 @@ public class Terminal {
         this.commands = new Commands(commands);
     }
 
-    public String getContent() {
-        return content;
+    public void displayContent() {
+        display.setText(content);
     }
 
     // call this method upon pressing enter/submit
