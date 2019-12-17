@@ -3,44 +3,51 @@ package androidapps.linuxtutorialapp;
 import java.util.TreeMap;
 
 // tree node class to support the folder directory implementation
-public class Node<E> {
+public class Node<String> {
 
-    private E info;
-    private Node<E> parent;
-    private TreeMap<E, Node<E>> children;
+    private String name;
+    private Node<String> parent;
+    private TreeMap<String, Node<String>> children;
 
-    public Node(E value) {
-        info = value;
+    public Node(String name) {
+        this.name = name;
         children = new TreeMap<>();
     }
 
-    public E getInfo() {
-        return info;
+    public String getName() {
+        return name;
     }
 
-    public void setInfo(E value) {
-        info = value;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Node<E> getParent() {
+    public Node<String> getParent() {
         return parent;
     }
 
-    public void setParent(Node<E> parent) {
+    public void setParent(Node<String> parent) {
         this.parent = parent;
     }
 
-    public TreeMap<E, Node<E>> getChildren() {
+    public TreeMap<String, Node<String>> getChildren() {
         return children;
     }
 
-    public boolean addChild(Node<E> child) {
-        E name = child.getInfo();
-        return !children.containsKey(name) && children.put(name, child) == null;
+    public boolean addChild(String name) {
+        if (!children.containsKey(name)) {
+            Node<String> child = new Node<>(name);
+            children.put(name, child);
+            return true;
+        }
+        return false;
     }
 
-    public boolean deleteChild(Node<E> child) {
-        E name = child.getInfo();
-        return children.remove(name) == null;
+    public boolean deleteChild(String name) {
+        if (children.containsKey(name)) {
+            children.remove(name);
+            return true;
+        }
+        return false;
     }
 }

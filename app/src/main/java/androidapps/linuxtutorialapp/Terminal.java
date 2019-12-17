@@ -7,17 +7,17 @@ import android.widget.TextView;
 public class Terminal {
 
     private String content;
-    private String directory;
     private EditText input;
     private TextView display;
-    private Commands command;
 
-    public Terminal(String directory, TextView display, EditText input) {
+    public Terminal(TextView display, EditText input) {
         content = "";
-        this.directory = directory;
         this.display = display;
         this.input = input;
-        command = new Commands();
+    }
+
+    public String getContent() {
+        return content;
     }
 
     // call this method upon pressing enter/submit
@@ -28,24 +28,22 @@ public class Terminal {
 
     // update the display of the terminal
     private void updateTerminal(String userInput) {
-        content += "\n";
-        addUserResponse(userInput);
+        addUserInput(userInput);
         content += "\n";
         addTerminalResponse(userInput);
+        content += "\n";
     }
 
-    private void addUserResponse(String userInput) {
-        String header = "root:" + directory + "$ ";
+    private void addUserInput(String userInput) {
+        String header = "root:" + getDirectory() + "$ ";
         content += header + userInput;
     }
 
+    private String getDirectory() {
+        return "";
+    }
+
     private void addTerminalResponse(String userInput) {
-        if (userInput.length() != 0) {
-            boolean dirCommand = command.getType(userInput);
-            if (dirCommand)
-                return;
-            else
-                return;
-        }
+
     }
 }

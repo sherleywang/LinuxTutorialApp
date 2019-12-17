@@ -19,7 +19,7 @@ public class FolderTree {
         response = "";
     }
 
-    public boolean add(Node<String> parent, Node<String> child) {
+    public boolean add(Node<String> parent, String child) {
         if (parent != null) {
             parent.addChild(child);
             return true;
@@ -27,7 +27,7 @@ public class FolderTree {
         return false;
     }
 
-    public boolean remove(Node<String> parent, Node<String> child) {
+    public boolean remove(Node<String> parent, String child) {
         if (parent != null) {
             parent.deleteChild(child);
             return true;
@@ -60,7 +60,7 @@ public class FolderTree {
             StringBuilder structure = new StringBuilder();
             for (int tab = 0; tab < tabs; tab++)
                 structure.append("\t");
-            structure.append(current.getInfo());
+            structure.append(current.getName());
             structure.append("\n");
             Log.d("in tree", structure.toString());
             TreeMap<String, Node<String>> children = current.getChildren();
