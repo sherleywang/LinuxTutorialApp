@@ -1,6 +1,7 @@
 package androidapps.linuxtutorialapp;
 
 import java.util.TreeMap;
+import java.util.Date;
 
 // tree node class to support the folder directory implementation
 public class Node<String>  {
@@ -11,13 +12,32 @@ public class Node<String>  {
 
     // Node attributes
     private boolean isDirectory;
+    private String permissions;
     private String userOwner;
-    private int lastModified;
+    private String group;
+    private int size;
+    private Date lastModified;
 
     public Node(String name, Node<String> parent) {
         this.name = name;
         this.parent = parent;
         this.children = new TreeMap<>();
+    }
+
+    public boolean isDirectory() {
+        return isDirectory;
+    }
+
+    public void makeDirectory() {
+        isDirectory = true;
+    }
+
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(String newPermissions) {
+        permissions = newPermissions;
     }
 
     public String getName() {
@@ -32,20 +52,40 @@ public class Node<String>  {
         return parent;
     }
 
-    public boolean isDirectory() {
-        return isDirectory;
-    }
-
-    public void makeDirectory() {
-        isDirectory = true;
-    }
-
     public String getOwner() {
         return userOwner;
     }
 
-    public void setOwner(String owner) {
-        userOwner = owner;
+    public void setOwner(String newOwner) {
+        userOwner = newOwner;
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String newGroup) {
+        group = newGroup;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int newSize) {
+        size = newSize;
+    }
+
+    public Date getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified() {
+        lastModified = new Date();
+    }
+
+    public void setLastModified(Date newDate) {
+        lastModified = newDate;
     }
 
     public TreeMap<String, Node<String>> getChildren() {
